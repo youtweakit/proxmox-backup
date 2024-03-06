@@ -1,11 +1,19 @@
+// logger.rs
+
 use env_logger::Builder;
-use log::LevelFilter;
+use log::{error, info, LevelFilter};
 
-/// Configure the logger to write to the specified log file
+// Path to log file
+pub const LOG_FILE_PATH: &str = "/var/log/pbs-client/email.log";
+
+/// Configure the logger to write to the log file
 pub fn init_logger() {
-    let log_file_path = "/var/log/pbs-client/email.log"; // U can change path if u like
-
     Builder::from_env(env_logger::Env::default().default_filter_or("info"))
-        .target(env_logger::Target::File(log_file_path.into()))
+        .target(env_logger::Target::File(LOG_FILE_PATH.into()))
         .init();
+}
+
+//logging errors
+pub fn log_error(message: &str, error: &dyn std::error::Error) {
+    error!("{}: {}", message, error);
 }
