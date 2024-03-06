@@ -77,6 +77,7 @@ pub mod namespace;
 mod logger;
 pub use logger::*;
 
+
 fn record_repository(repo: &BackupRepository) {
     let base = match BaseDirectories::with_prefix("proxmox-backup") {
         Ok(v) => v,
