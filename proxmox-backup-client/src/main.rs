@@ -74,6 +74,8 @@ mod snapshot;
 pub use snapshot::*;
 pub mod key;
 pub mod namespace;
+mod logger;
+pub use logger::*;
 
 fn record_repository(repo: &BackupRepository) {
     let base = match BaseDirectories::with_prefix("proxmox-backup") {
